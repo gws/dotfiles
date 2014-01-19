@@ -1,0 +1,33 @@
+defscrollback 10000      # plenty of scrollback
+startup_message off      # get out of my way
+vbell off                # get out of my way
+nonblock on              # don't hang everything
+defutf8 on               # UTF-8 everywhere
+msgwait 3                # 3 seconds for messages
+altscreen on             # prevent programs from clobbering screen contents
+attrcolor b ".I"         # allow bold colors (?)
+term screen-256color-bce # 256 colors for next level screen
+defbce on                # background color erase
+
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Set the caption on the bottom line
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+
+bindkey ^EC digraph U+0108
+bindkey ^Ec digraph U+0109
+
+bindkey ^EG digraph U+011C
+bindkey ^Eg digraph U+011D
+
+bindkey ^EH digraph U+0124
+bindkey ^Eh digraph U+0125
+
+bindkey ^EJ digraph U+0134
+bindkey ^Ej digraph U+0135
+
+bindkey ^ES digraph U+015C
+bindkey ^Es digraph U+015D
+
+bindkey ^EU digraph U+016C
+bindkey ^Eu digraph U+016D
