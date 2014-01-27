@@ -92,6 +92,9 @@ augroup gws
     au FileType perl,php,python setl shiftwidth=4 softtabstop=4
 
     au FileType c,cpp setl noexpandtab shiftwidth=8 tabstop=8
+
+    au FileType haskell setl shiftwidth=4 softtabstop=4 tabstop=8
+    au FileType haskell setl shiftround nojoinspaces
 augroup END
 
 " Key mappings
