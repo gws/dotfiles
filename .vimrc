@@ -24,7 +24,7 @@ set confirm
 " abbreviate messages
 set shortmess+=filmnrxoOtT
 " better unix / windows compatibility
-set viewoptions=folds,options,cursor,unix,slash 
+set viewoptions=folds,options,cursor,unix,slash
 " allow for cursor beyond last character
 set virtualedit=onemore
 " more history
