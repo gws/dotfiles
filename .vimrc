@@ -10,11 +10,8 @@ set fileencoding=utf-8
 " i don't want your code executing things in my editor
 set nomodeline
 
-" syntax highlighting
-syntax on
-
 " avoid hanging on long lines
-set synmaxcol=200
+set synmaxcol=420
 
 " enable filetype plugins
 filetype plugin indent on
@@ -27,19 +24,13 @@ set shortmess+=filmnrxoOtT
 set viewoptions=folds,options,cursor,unix,slash
 " allow for cursor beyond last character
 set virtualedit=onemore
-" more history
-set history=1000
 " allow buffer switching without saving
 set hidden
 
-" better backspacing
-set backspace=indent,eol,start
 " no spacing between rows
 set linespace=0
 " no line numbering
 set nonumber
-" find-as-you-type
-set incsearch
 " highlight search terms
 set hlsearch
 set winminheight=0
@@ -50,30 +41,21 @@ set smartcase
 " default on /g modifier for substitution
 set gdefault
 set wildignore=.*.*~,.*.sw?,.swp,*.hi,*.o
-" show completion menu instead of just completing
-set wildmenu
 " matches longest, then full
 set wildmode=list:longest,full
 " what bs and cursor keys wrap to
 set whichwrap=b,s,h,l,<,>,[,]
-" how far to jump when cursor leaves screen
-set scrolljump=5
-" how many lines above/below cursor
-set scrolloff=3
 " auto-fold code
 set foldenable
 set fillchars=
 
 " problematic whitespace
 set list
-set listchars=tab:⇥\ ,trail:·
 
 " indentation and tabbing defaults
 set nowrap
 set linebreak
 set showbreak=…
-set autoindent
-set smarttab
 set expandtab shiftwidth=2 softtabstop=2 tabstop=2
 set textwidth=80
 set formatoptions=roql
@@ -95,7 +77,7 @@ augroup gws
     au FileType c,cpp setl noexpandtab shiftwidth=8 tabstop=8
 
     au FileType haskell setl shiftwidth=4 softtabstop=4 tabstop=8
-    au FileType haskell setl shiftround nojoinspaces
+    au FileType haskell setl nojoinspaces
 
     au FileType haskell compiler ghc
 
