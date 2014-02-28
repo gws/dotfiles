@@ -85,6 +85,7 @@ augroup gws
     au FileType clojure RainbowParenthesesLoadRound
     au FileType clojure RainbowParenthesesLoadSquare
     au FileType clojure RainbowParenthesesLoadBraces
+    au FileType clojure setl lisp
 
     au BufRead *.phtml setl shiftwidth=2 softtabstop=2
     au BufRead *.ptxt setl filetype=php shiftwidth=2 softtabstop=2
@@ -95,6 +96,10 @@ augroup gws
 
     au FileType haskell setl shiftwidth=4 softtabstop=4 tabstop=8
     au FileType haskell setl shiftround nojoinspaces
+
+    au FileType haskell compiler ghc
+
+    let g:haddock_browser="/usr/bin/x-www-browser"
 augroup END
 
 " Key mappings
