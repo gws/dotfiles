@@ -1,4 +1,4 @@
-call pathogen#infect()
+execute pathogen#infect()
 
 " sane default language encoding
 set encoding=utf-8
