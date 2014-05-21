@@ -1,0 +1,30 @@
+# Show latest container ID
+alias dpl="docker ps -l -q"
+
+# Show running containers
+alias dps="docker ps"
+
+# Show all containers (including stopped)
+alias dpa="docker ps -a"
+
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# Get images
+alias di="docker images"
+
+# Run interactive container
+alias dri="docker run -i -t -P"
+
+# Run interactive, ephemeral container
+alias dre="docker run --rm -i -t -P"
+
+# Stop all containers
+function dsa() {
+  docker stop $(docker ps -a -q)
+}
+
+# Dockerfile build
+function dbu() {
+  docker build -t=$1 .
+}
