@@ -3,9 +3,9 @@ umask 022
 set -o vi
 
 if [ $(id -u) -eq 0 ]; then
-    export PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
+  export PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
 else
-    export PS1="\u@[1;32m\h[m:\w\n\\$ "
+  export PS1="\u@[1;32m\h[m:\w\n\\$ "
 fi
 
 export EDITOR="vim"
@@ -35,6 +35,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+for script in $HOME/.bashrc.d/*
+do
+  [ -x "$script" ] || continue
+
+  . $script
+done
+
 if [ -r "$HOME/.bashrc-local" ]; then
-    . $HOME/.bashrc-local
+  . $HOME/.bashrc-local
 fi
