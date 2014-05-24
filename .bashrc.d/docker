@@ -1,30 +1,36 @@
-# Show latest container ID
-alias dpl="docker ps -l -q"
+# Remove container
+alias dcrm="docker rm"
 
 # Show running containers
 alias dps="docker ps"
 
+# Show latest container ID
+alias dpsl="docker ps -l -q"
+
 # Show all containers (including stopped)
-alias dpa="docker ps -a"
+alias dpsa="docker ps -a"
 
 # Get container IP
-alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dinp="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Get images
 alias di="docker images"
 
+# Remove image
+alias dirm="docker rmi"
+
 # Run interactive container
-alias dri="docker run -i -t -P"
+alias dri="docker run -i -t"
 
 # Run interactive, ephemeral container
-alias dre="docker run --rm -i -t -P"
+alias drie="docker run --rm -i -t"
 
 # Stop all containers
 function dsa() {
   docker stop $(docker ps -a -q)
 }
 
-# Dockerfile build
-function dbu() {
+# Dockerfile-build with tag
+function dbt() {
   docker build -t=$1 .
 }
