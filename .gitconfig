@@ -23,7 +23,7 @@
     tool = vimdiff
 
 [push]
-    default = tracking
+    default = current
 
 [alias]
     # Index operations
