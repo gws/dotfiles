@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/vim-typedclojure"]
 	path = .vim/bundle/vim-typedclojure
 	url = https://github.com/typedclojure/vim-typedclojure.git
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
