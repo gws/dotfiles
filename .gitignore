@@ -2,6 +2,7 @@
 !/.bashrc.d/
 !/.vim/
 /.vim/haskellmode.config
+/.vim/vimrc-local
 !/.Xresources
 !/.ackrc
 !/.bashrc
@@ -9,6 +10,4 @@
 !/.gitignore
 !/.gitmodules
 !/.profile
-!/.screenrc
 !/.tmux.conf
-!/.vimrc

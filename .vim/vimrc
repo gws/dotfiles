@@ -158,6 +158,6 @@ else
     set t_Co=256
 endif
 
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
+if filereadable(expand("~/.vim/vimrc-local"))
+    source ~/.vim/vimrc-local
 endif
