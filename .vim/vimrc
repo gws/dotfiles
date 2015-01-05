@@ -57,6 +57,7 @@ set linebreak
 set showbreak=…
 set expandtab shiftwidth=2 softtabstop=2 tabstop=2
 set textwidth=80
+set formatoptions-=t
 
 colorscheme Tomorrow-Night
 
