@@ -96,8 +96,8 @@ imap <left> <nop>
 imap <right> <nop>
 
 " rebind from \ to , as it is a little more standard
-let g:mapleader = ','
-let g:maplocalleader = ','
+let g:mapleader=','
+let g:maplocalleader=','
 
 " easier command entry
 nnoremap ; :
@@ -119,10 +119,10 @@ let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup=1
 
 " Plugin: rainbow_parentheses.vim
-let g:rbpt_colorpairs = [
+let g:rbpt_colorpairs=[
   \ ['brown',       'RoyalBlue3'],
   \ ['darkgray',    'DarkOrchid3'],
   \ ['darkgreen',   'firebrick3'],
@@ -137,7 +137,7 @@ let g:rbpt_colorpairs = [
   \ ['darkred',     'DarkOrchid3'],
   \ ['red',         'firebrick3'],
   \ ]
-let g:rbpt_max = len(g:rbpt_colorpairs)
+let g:rbpt_max=len(g:rbpt_colorpairs)
 
 " Temporary files
 if !isdirectory(expand('~/.cache/vim/undo'))
@@ -146,7 +146,7 @@ endif
 if isdirectory(expand('~/.cache/vim'))
     set directory=~/.cache/vim
     set viminfo+=n~/.cache/vim/viminfo
-    let g:netrw_home = expand('~/.cache/vim')
+    let g:netrw_home=expand('~/.cache/vim')
 endif
 if has('persistent_undo') && isdirectory(expand('~/.cache/vim/undo'))
     set undofile
