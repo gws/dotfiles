@@ -62,12 +62,6 @@ set formatoptions-=t
 colorscheme Tomorrow-Night
 
 augroup gws
-    au FileType clojure RainbowParenthesesActivate
-    au FileType clojure RainbowParenthesesLoadRound
-    au FileType clojure RainbowParenthesesLoadSquare
-    au FileType clojure RainbowParenthesesLoadBraces
-    au FileType clojure setl lisp
-
     au BufRead *.phtml setl shiftwidth=2 softtabstop=2
     au BufRead *.ptxt setl filetype=php shiftwidth=2 softtabstop=2
 
@@ -118,26 +112,6 @@ let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
-
-let g:neocomplete#enable_at_startup=1
-
-" Plugin: rainbow_parentheses.vim
-let g:rbpt_colorpairs=[
-  \ ['brown',       'RoyalBlue3'],
-  \ ['darkgray',    'DarkOrchid3'],
-  \ ['darkgreen',   'firebrick3'],
-  \ ['darkcyan',    'RoyalBlue3'],
-  \ ['darkred',     'SeaGreen3'],
-  \ ['darkmagenta', 'DarkOrchid3'],
-  \ ['brown',       'firebrick3'],
-  \ ['gray',        'RoyalBlue3'],
-  \ ['darkmagenta', 'DarkOrchid3'],
-  \ ['darkgreen',   'RoyalBlue3'],
-  \ ['darkcyan',    'SeaGreen3'],
-  \ ['darkred',     'DarkOrchid3'],
-  \ ['red',         'firebrick3'],
-  \ ]
-let g:rbpt_max=len(g:rbpt_colorpairs)
 
 " Temporary files
 if !isdirectory(expand('~/.cache/vim/undo'))
