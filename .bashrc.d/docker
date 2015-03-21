@@ -1,36 +1,39 @@
-# Remove container
+# *d*ocker *c*ontainer *r*e*m*ove
 alias dcrm="docker rm"
 
-# Show running containers
+# *d*ocker *ps*
 alias dps="docker ps"
 
-# Show latest container ID
-alias dpsl="docker ps -l -q"
-
-# Show all containers (including stopped)
+# *d*ocker *ps* *a*ll
 alias dpsa="docker ps -a"
 
-# Get container IP
+# *d*ocker *ps* *l*atest
+alias dpsl="docker ps -l -q"
+
+# *d*ocker *in*spect I*P*
 alias dinp="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
-# Get images
+# *d*ocker *i*mages
 alias di="docker images"
 
-# Remove image
+# *d*ocker *i*mage *r*e*m*ove
 alias dirm="docker rmi"
 
-# Run interactive container
+# *d*ocker *i*mage *r*e*m*ove *d*angling
+alias dirmd="docker images -q --no-trunc -f 'dangling=true' | xargs -r docker rmi"
+
+# *d*ocker *r*un *i*nteractive container
 alias dri="docker run -i -t"
 
-# Run interactive, ephemeral container
+# *d*ocker *r*un *i*nteractive, *e*phemeral container
 alias drie="docker run --rm -i -t"
 
-# Stop all containers
+# *d*ocker *s*top *a*ll containers
 function dsa() {
   docker stop $(docker ps -a -q)
 }
 
-# Dockerfile-build with tag
+# *d*ocker *b*uild with *t*ag
 function dbt() {
   docker build -t=$1 .
 }
