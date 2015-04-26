@@ -107,9 +107,11 @@ map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
-" Clojure testing
-map <leader>ct :RunTests
-map <leader>cta :RunAllTests
+" vim-fireplace (Clojure-specific)
+map <leader>cr :Require<CR>
+map <leader>cra :Require!<CR>
+map <leader>ct :RunTests<CR>
+map <leader>cta :RunAllTests<CR>
 
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=0
