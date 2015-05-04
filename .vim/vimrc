@@ -103,7 +103,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " Plugin: NerdTree
-map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
@@ -117,7 +117,6 @@ let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
 
 " Temporary files
 if !isdirectory(expand('~/.cache/vim/undo'))
