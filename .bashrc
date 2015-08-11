@@ -15,7 +15,7 @@ export JAVA_HOME="`which java | sed 's!/bin/java!!'`"
 export LESS="-q -R"
 export LESSHISTFILE="-"
 export PAGER="less"
-export PATH="${HOME}/bin:${HOME}/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="${HOME}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 export SUDO_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 
