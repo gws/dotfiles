@@ -55,26 +55,21 @@ set list
 set nowrap
 set linebreak
 set showbreak=…
-set expandtab shiftwidth=2 softtabstop=2 tabstop=2
+set expandtab shiftwidth=2 tabstop=2 softtabstop=2
 set textwidth=80
 set formatoptions-=t
 
 colorscheme Tomorrow-Night
 
 augroup gws
-    au BufRead *.phtml setl shiftwidth=2 softtabstop=2
-    au BufRead *.ptxt setl filetype=php shiftwidth=2 softtabstop=2
+    au BufRead,BufNewFile *.phtml,*.ptxt setl filetype=php
 
-    au FileType perl,php,python setl shiftwidth=4 softtabstop=4
+    au FileType perl,php,python setl shiftwidth=4 tabstop=4 softtabstop=4
 
-    au FileType c,cpp setl noexpandtab shiftwidth=8 tabstop=8
+    au FileType c,cpp,go setl noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
 
-    au FileType haskell setl shiftwidth=4 softtabstop=4 tabstop=8
-    au FileType haskell setl nojoinspaces
-
+    au FileType haskell setl shiftwidth=4 tabstop=4 softtabstop=4 nojoinspaces
     au FileType haskell compiler ghc
-
-    let g:haddock_browser="/usr/bin/x-www-browser"
 augroup END
 
 " Key mappings
