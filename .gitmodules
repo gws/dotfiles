@@ -25,6 +25,9 @@
 [submodule ".vim/bundle/refheap.vim"]
 	path = .vim/bundle/refheap.vim
 	url = https://github.com/Raynes/refheap.vim.git
+[submodule ".vim/bundle/rust.vim"]
+	path = .vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
 [submodule ".vim/bundle/scratch.vim"]
 	path = .vim/bundle/scratch.vim
 	url = https://github.com/vim-scripts/scratch.vim.git
