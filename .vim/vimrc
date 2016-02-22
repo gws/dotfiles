@@ -68,8 +68,7 @@ augroup gws
 
     au FileType c,cpp,go setl noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
 
-    au FileType haskell setl shiftwidth=4 tabstop=4 softtabstop=4 nojoinspaces
-    au FileType haskell compiler ghc
+    au FileType haskell setl shiftwidth=4 tabstop=4 softtabstop=4 shiftround
 augroup END
 
 " Key mappings
@@ -107,6 +106,12 @@ map <leader>cr :Require<CR>
 map <leader>cra :Require!<CR>
 map <leader>ct :RunTests<CR>
 map <leader>cta :RunAllTests<CR>
+
+" ghcmod-vim (Haskell-specific)
+map <leader>htw :GhcModTypeInsert<CR>
+map <leader>hts :GhcModSplitFunCase<CR>
+map <leader>htq :GhcModType<CR>
+map <leader>hte :GhcModTypeClear<CR>
 
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=0
