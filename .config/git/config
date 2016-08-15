@@ -3,8 +3,8 @@
     email = gordon.stratton@gmail.com
 
 [core]
-    ignorecase   = false
-    whitespace   = trailing-space,space-before-tab
+    ignorecase = false
+    whitespace = trailing-space,space-before-tab
 
 [color]
     ui = auto
@@ -119,12 +119,12 @@
     shallowclone = clone --depth=1
 
     # Stash
-    sta     = stash
-    stap    = stash -p
-    stau    = stash -u
-    staup   = stash -u -p
-    stal    = stash list
-    stalp   = stash list -p
+    sta   = stash
+    stap  = stash -p
+    stau  = stash -u
+    staup = stash -u -p
+    stal  = stash list
+    stalp = stash list -p
 
     # Status
     s = status
