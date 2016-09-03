@@ -106,6 +106,7 @@ map <leader>cr :Require<CR>
 map <leader>cra :Require!<CR>
 map <leader>ct :RunTests<CR>
 map <leader>cta :RunAllTests<CR>
+map <leader>ctc :.RunTests<CR>
 
 " ghcmod-vim (Haskell-specific)
 map <leader>htw :GhcModTypeInsert<CR>
