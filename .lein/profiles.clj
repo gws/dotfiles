@@ -1,7 +1,5 @@
-{:user {:aliases {"slamhound" ["run" "-m" "slam.hound"]}
-        :dependencies [[org.clojure/tools.namespace "0.2.10"]
-                       [org.clojure/tools.trace "0.7.9"]
-                       [slamhound "1.5.5"]]
+{:user {:dependencies [[org.clojure/tools.namespace "0.2.10"]
+                       [org.clojure/tools.trace "0.7.9"]]
         :plugins [[jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
                   [lein-ancient "0.6.10"]
                   [lein-cljfmt "0.5.3" :exclusions [org.clojure/clojure]]
