@@ -59,7 +59,23 @@ set expandtab shiftwidth=2 tabstop=2 softtabstop=2
 set textwidth=80
 set formatoptions-=t
 
+" clojure formatting
+let g:clojure_align_subforms=1
+let g:clojure_fuzzy_indent=1
+let g:clojure_fuzzy_indent_patterns=['^with', '^def', '^let', '^try']
+let g:clojure_syntax_keywords={
+  \ 'clojureMacro': ['defproject', 'deftask'],
+  \ }
+
 colorscheme Tomorrow-Night
+
+function! Figwheel()
+  execute "Eval (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/start-figwheel!))"
+endfunction
+
+function! Figgieback()
+  execute "Piggieback (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/repl-env))"
+endfunction
 
 augroup gws
     au BufRead,BufNewFile *.phtml,*.ptxt setl filetype=php
@@ -67,6 +83,9 @@ augroup gws
     au FileType perl,php,python setl shiftwidth=4 tabstop=4 softtabstop=4
 
     au FileType c,cpp,go setl noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
+
+    au FileType clojure command! Figwheel :execute Figwheel()
+    au FileType clojure command! Figgieback :execute Figgieback()
 
     au FileType haskell setl shiftwidth=4 tabstop=4 softtabstop=4 shiftround
 augroup END
