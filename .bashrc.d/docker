@@ -19,9 +19,6 @@ alias di="docker images"
 # *d*ocker *i*mage *r*e*m*ove
 alias dirm="docker rmi"
 
-# *d*ocker *i*mage *r*e*m*ove *d*angling
-alias dirmd="docker images -q --no-trunc -f 'dangling=true' | xargs -r docker rmi"
-
 # *d*ocker *r*un *i*nteractive container
 alias dri="docker run -i -t"
 
