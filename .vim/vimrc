@@ -69,10 +69,6 @@ let g:clojure_syntax_keywords={
 
 colorscheme Tomorrow-Night
 
-function! Figwheel()
-  execute "Eval (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/start-figwheel!))"
-endfunction
-
 function! Figgieback()
   execute "Piggieback (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/repl-env))"
 endfunction
