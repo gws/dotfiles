@@ -5,6 +5,6 @@
                   [lein-cljfmt "0.5.6" :exclusions [org.clojure/clojure]]
                   [lein-exec "0.3.6"]
                   [lein-kibit "0.1.3" :exclusions [org.clojure/clojure]]
-                  [lein-ring "0.10.0"]
+                  [lein-ring "0.11.0"]
                   [lein-pprint "1.1.2"]]
         :signing {:gpg-key "0x5D5F3485F7935DE0"}}}
