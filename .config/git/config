@@ -5,6 +5,7 @@
 
 [core]
     ignorecase = false
+    pager      = less -F -X
     whitespace = trailing-space,space-before-tab
 
 [color]
