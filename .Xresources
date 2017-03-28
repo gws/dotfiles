@@ -1,7 +1,8 @@
+! uxterm resources
+
 UXTerm*faceName: DejaVu Sans Mono
 UXTerm*faceSize: 9
 
-! uxterm resources
 UXTerm*background: #1d1f21
 UXTerm*foreground: white
 UXTerm*geometry: 105x36
