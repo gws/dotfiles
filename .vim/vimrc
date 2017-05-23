@@ -75,6 +75,7 @@ endfunction
 
 augroup gws
     au BufRead,BufNewFile *.phtml,*.ptxt setl filetype=php
+    au BufRead,BufNewFile *.boot setl filetype=clojure
 
     au FileType perl,php,python setl shiftwidth=4 tabstop=4 softtabstop=4
 
