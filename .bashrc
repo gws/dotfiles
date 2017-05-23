@@ -37,8 +37,6 @@ fi
 
 for script in $HOME/.bashrc.d/*
 do
-  [ -x "$script" ] || continue
-
   . $script
 done
 
