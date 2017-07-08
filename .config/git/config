@@ -1,7 +1,6 @@
 [user]
     name       = Gordon Stratton
     email      = gordon.stratton@gmail.com
-    signingKey = 5D5F3485F7935DE0
 
 [core]
     ignorecase = false
