@@ -1,7 +1,7 @@
 ! uxterm resources
 
 UXTerm*faceName: Hack:style=Regular
-UXTerm*faceSize: 10
+UXTerm*faceSize: 9
 
 UXTerm*background: #1d1f21
 UXTerm*foreground: white
