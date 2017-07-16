@@ -1,4 +1,4 @@
-{:user {:dependencies [[org.clojure/tools.namespace "0.2.10"]
+{:user {:dependencies [[org.clojure/tools.namespace "0.2.11"]
                        [org.clojure/tools.trace "0.7.9"]]
         :plugins [[jonase/eastwood "0.2.4" :exclusions [org.clojure/clojure]]
                   [lein-ancient "0.6.10"]
