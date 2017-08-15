@@ -93,7 +93,8 @@ let g:mapleader=','
 let g:maplocalleader=','
 
 " easier command entry
-nnoremap ; :
+map ; :
+noremap ;; ;
 
 " clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
