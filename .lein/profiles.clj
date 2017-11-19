@@ -4,6 +4,6 @@
                   [lein-ancient "0.6.14"]
                   [lein-cljfmt "0.5.7" :exclusions [org.clojure/clojure]]
                   [lein-exec "0.3.6"]
-                  [lein-kibit "0.1.5" :exclusions [org.clojure/clojure]]
+                  [lein-kibit "0.1.6" :exclusions [org.clojure/clojure]]
                   [lein-ring "0.12.1"]
                   [lein-pprint "1.1.2"]]}}
