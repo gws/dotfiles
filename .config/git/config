@@ -64,6 +64,10 @@
     lst  = log --relative-date --decorate --graph --show-signature --stat
     lfst = log --relative-date --decorate --graph --show-signature --stat --first-parent --no-merges
 
+    lol   = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lola  = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative --all
+    lolas = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative --all --stat
+
     lp   = log --relative-date --decorate --patch --show-signature --stat
     lfp  = log --relative-date --decorate --patch --show-signature --stat --first-parent --no-merges
     lpw  = log --relative-date --decorate --patch --show-signature --stat -w
