@@ -1,7 +1,5 @@
 umask 022
 
-set -o vi
-
 if [ $(id -u) -eq 0 ]; then
     export PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
 else
