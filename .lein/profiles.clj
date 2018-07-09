@@ -1,7 +1,7 @@
 {:user {:dependencies [[org.clojure/tools.namespace "0.2.11"]
                        [org.clojure/tools.trace "0.7.9"]]
         :plugins [[cider/cider-nrepl "0.17.0"]
-                  [jonase/eastwood "0.2.6"]
+                  [jonase/eastwood "0.2.7"]
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.5.7"]
                   [lein-exec "0.3.7"]
