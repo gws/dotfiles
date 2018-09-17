@@ -3,7 +3,7 @@
         :plugins [[cider/cider-nrepl "0.18.0"]
                   [jonase/eastwood "0.2.9"]
                   [lein-ancient "0.6.15"]
-                  [lein-cljfmt "0.6.0"]
+                  [lein-cljfmt "0.6.1"]
                   [lein-exec "0.3.7"]
                   [lein-kibit "0.1.6"]
                   [lein-ring "0.12.4"]
