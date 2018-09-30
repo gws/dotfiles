@@ -1,5 +1,5 @@
 {:user {:dependencies [[org.clojure/tools.namespace "0.2.11"]
-                       [org.clojure/tools.trace "0.7.9"]]
+                       [org.clojure/tools.trace "0.7.10"]]
         :plugins [[cider/cider-nrepl "0.18.0"]
                   [jonase/eastwood "0.2.9"]
                   [lein-ancient "0.6.15"]
