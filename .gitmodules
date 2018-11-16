@@ -40,9 +40,6 @@
 [submodule ".vim/bundle/vim-airline-themes"]
 	path = .vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule ".vim/bundle/vim-classpath"]
-	path = .vim/bundle/vim-classpath
-	url = https://github.com/tpope/vim-classpath.git
 [submodule ".vim/bundle/vim-clojure-highlight"]
 	path = .vim/bundle/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
