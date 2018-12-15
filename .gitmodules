@@ -1,108 +1,108 @@
-[submodule ".vim/bundle/csv.vim"]
+[submodule ".vim/pack/gws/start/csv.vim"]
 	path = .vim/pack/gws/start/csv.vim
 	url = https://github.com/chrisbra/csv.vim.git
-[submodule ".vim/bundle/ghcmod-vim"]
+[submodule ".vim/pack/gws/start/ghcmod-vim"]
 	path = .vim/pack/gws/start/ghcmod-vim
 	url = https://github.com/eagletmt/ghcmod-vim.git
-[submodule ".vim/bundle/gitv"]
+[submodule ".vim/pack/gws/start/gitv"]
 	path = .vim/pack/gws/start/gitv
 	url = https://github.com/gregsexton/gitv.git
-[submodule ".vim/bundle/html5.vim"]
+[submodule ".vim/pack/gws/start/html5.vim"]
 	path = .vim/pack/gws/start/html5.vim
 	url = https://github.com/othree/html5.vim.git
-[submodule ".vim/bundle/neco-ghc"]
+[submodule ".vim/pack/gws/start/neco-ghc"]
 	path = .vim/pack/gws/start/neco-ghc
 	url = https://github.com/eagletmt/neco-ghc.git
-[submodule ".vim/bundle/neocomplete.vim"]
+[submodule ".vim/pack/gws/start/neocomplete.vim"]
 	path = .vim/pack/gws/start/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim.git
-[submodule ".vim/bundle/nerdtree"]
+[submodule ".vim/pack/gws/start/nerdtree"]
 	path = .vim/pack/gws/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/rust.vim"]
+[submodule ".vim/pack/gws/start/rust.vim"]
 	path = .vim/pack/gws/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule ".vim/bundle/scratch.vim"]
+[submodule ".vim/pack/gws/start/scratch.vim"]
 	path = .vim/pack/gws/start/scratch.vim
 	url = https://github.com/vim-scripts/scratch.vim.git
-[submodule ".vim/bundle/tabular"]
+[submodule ".vim/pack/gws/start/tabular"]
 	path = .vim/pack/gws/start/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule ".vim/bundle/tlib_vim"]
+[submodule ".vim/pack/gws/start/tlib_vim"]
 	path = .vim/pack/gws/start/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
-[submodule ".vim/bundle/vim-addon-mw-utils"]
+[submodule ".vim/pack/gws/start/vim-addon-mw-utils"]
 	path = .vim/pack/gws/start/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/bundle/vim-airline"]
+[submodule ".vim/pack/gws/start/vim-airline"]
 	path = .vim/pack/gws/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
-[submodule ".vim/bundle/vim-airline-themes"]
+[submodule ".vim/pack/gws/start/vim-airline-themes"]
 	path = .vim/pack/gws/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule ".vim/bundle/vim-clojure-highlight"]
+[submodule ".vim/pack/gws/start/vim-clojure-highlight"]
 	path = .vim/pack/gws/start/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
-[submodule ".vim/bundle/vim-dispatch"]
+[submodule ".vim/pack/gws/start/vim-dispatch"]
 	path = .vim/pack/gws/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule ".vim/bundle/vim-eunuch"]
+[submodule ".vim/pack/gws/start/vim-eunuch"]
 	path = .vim/pack/gws/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch.git
-[submodule ".vim/bundle/vim-fireplace"]
+[submodule ".vim/pack/gws/start/vim-fireplace"]
 	path = .vim/pack/gws/start/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
-[submodule ".vim/bundle/vim-fugitive"]
+[submodule ".vim/pack/gws/start/vim-fugitive"]
 	path = .vim/pack/gws/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-go"]
+[submodule ".vim/pack/gws/start/vim-go"]
 	path = .vim/pack/gws/start/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/bundle/vim-leiningen"]
+[submodule ".vim/pack/gws/start/vim-leiningen"]
 	path = .vim/pack/gws/start/vim-leiningen
 	url = https://github.com/tpope/vim-leiningen.git
-[submodule ".vim/bundle/vim-less"]
+[submodule ".vim/pack/gws/start/vim-less"]
 	path = .vim/pack/gws/start/vim-less
 	url = https://github.com/groenewege/vim-less.git
-[submodule ".vim/bundle/vim-projectionist"]
+[submodule ".vim/pack/gws/start/vim-projectionist"]
 	path = .vim/pack/gws/start/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist.git
-[submodule ".vim/bundle/vim-puppet"]
+[submodule ".vim/pack/gws/start/vim-puppet"]
 	path = .vim/pack/gws/start/vim-puppet
 	url = https://github.com/rodjek/vim-puppet.git
-[submodule ".vim/bundle/vim-repeat"]
+[submodule ".vim/pack/gws/start/vim-repeat"]
 	path = .vim/pack/gws/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/vim-sensible"]
+[submodule ".vim/pack/gws/start/vim-sensible"]
 	path = .vim/pack/gws/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
-[submodule ".vim/bundle/vim-sexp"]
+[submodule ".vim/pack/gws/start/vim-sexp"]
 	path = .vim/pack/gws/start/vim-sexp
 	url = https://github.com/guns/vim-sexp.git
-[submodule ".vim/bundle/vim-sexp-mappings-for-regular-people"]
+[submodule ".vim/pack/gws/start/vim-sexp-mappings-for-regular-people"]
 	path = .vim/pack/gws/start/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
-[submodule ".vim/bundle/vim-slamhound"]
+[submodule ".vim/pack/gws/start/vim-slamhound"]
 	path = .vim/pack/gws/start/vim-slamhound
 	url = https://github.com/guns/vim-slamhound.git
-[submodule ".vim/bundle/vim-surround"]
+[submodule ".vim/pack/gws/start/vim-surround"]
 	path = .vim/pack/gws/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-toml"]
+[submodule ".vim/pack/gws/start/vim-toml"]
 	path = .vim/pack/gws/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
-[submodule ".vim/bundle/vim-tomorrow-theme"]
+[submodule ".vim/pack/gws/start/vim-tomorrow-theme"]
 	path = .vim/pack/gws/start/vim-tomorrow-theme
 	url = https://github.com/chriskempson/vim-tomorrow-theme.git
-[submodule ".vim/bundle/vim-typedclojure"]
+[submodule ".vim/pack/gws/start/vim-typedclojure"]
 	path = .vim/pack/gws/start/vim-typedclojure
 	url = https://github.com/typedclojure/vim-typedclojure.git
-[submodule ".vim/bundle/vimproc.vim"]
+[submodule ".vim/pack/gws/start/vimproc.vim"]
 	path = .vim/pack/gws/start/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule ".vim/bundle/ctrlp.vim"]
+[submodule ".vim/pack/gws/start/ctrlp.vim"]
 	path = .vim/pack/gws/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule ".vim/bundle/typescript-vim"]
+[submodule ".vim/pack/gws/start/typescript-vim"]
 	path = .vim/pack/gws/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
