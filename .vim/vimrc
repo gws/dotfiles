@@ -1,12 +1,10 @@
-execute pathogen#infect()
-
-" sane default language encoding
+" default language encoding
 set encoding=utf-8
 
 " make edited files utf-8
 set fileencoding=utf-8
 
-" i don't want your code executing things in my editor
+" files should not execute things in my editor
 set nomodeline
 
 " avoid hanging on long lines
