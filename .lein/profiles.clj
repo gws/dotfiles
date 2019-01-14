@@ -7,4 +7,4 @@
                   [lein-kibit "0.1.6"]
                   [lein-ring "0.12.4"]
                   [lein-pprint "1.2.0"]]}
- :repl {:plugins [[cider/cider-nrepl "0.19.0"]]}}
+ :repl {:plugins [[cider/cider-nrepl "0.20.0"]]}}
