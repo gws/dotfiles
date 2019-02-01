@@ -82,9 +82,6 @@
 [submodule ".vim/pack/gws/start/vim-sexp-mappings-for-regular-people"]
 	path = .vim/pack/gws/start/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
-[submodule ".vim/pack/gws/start/vim-slamhound"]
-	path = .vim/pack/gws/start/vim-slamhound
-	url = https://github.com/guns/vim-slamhound.git
 [submodule ".vim/pack/gws/start/vim-surround"]
 	path = .vim/pack/gws/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
