@@ -65,13 +65,37 @@ let g:clojure_syntax_keywords={
   \ 'clojureMacro': ['defproject', 'deftask'],
   \ }
 
-colorscheme Tomorrow-Night
+" Temporary files
+if !isdirectory(expand('~/.cache/vim/undo'))
+    call mkdir(expand('~/.cache/vim/undo'), 'p', 0700)
+endif
+if isdirectory(expand('~/.cache/vim'))
+    set directory=~/.cache/vim
+    set viminfo+=n~/.cache/vim/viminfo
+    let g:netrw_home=expand('~/.cache/vim')
+endif
+if has('persistent_undo') && isdirectory(expand('~/.cache/vim/undo'))
+    set undofile
+    set undodir=~/.cache/vim/undo
+endif
+
+if has('gui_running')
+    set guioptions=c
+else
+    set ttyfast
+    set t_Co=256
+endif
+
+set background=dark
+colorscheme solarized8
 
 function! Figgieback()
   execute "Piggieback (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/repl-env))"
 endfunction
 
 augroup gws
+    au VimEnter * :AirlineTheme sol
+
     au BufRead,BufNewFile *.phtml,*.ptxt setl filetype=php
     au BufRead,BufNewFile *.boot setl filetype=clojure
 
@@ -124,27 +148,6 @@ let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
-
-" Temporary files
-if !isdirectory(expand('~/.cache/vim/undo'))
-    call mkdir(expand('~/.cache/vim/undo'), 'p', 0700)
-endif
-if isdirectory(expand('~/.cache/vim'))
-    set directory=~/.cache/vim
-    set viminfo+=n~/.cache/vim/viminfo
-    let g:netrw_home=expand('~/.cache/vim')
-endif
-if has('persistent_undo') && isdirectory(expand('~/.cache/vim/undo'))
-    set undofile
-    set undodir=~/.cache/vim/undo
-endif
-
-if has('gui_running')
-    set guioptions=c
-else
-    set ttyfast
-    set t_Co=256
-endif
 
 if filereadable(expand("~/.vim/vimrc-local"))
     source ~/.vim/vimrc-local
