@@ -128,6 +128,11 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " if you forget to sudo - really write the file
 cmap w!! w !sudo tee % >/dev/null
 
+" base64-decode a visual selection
+vnoremap <leader>64d y:echo system('base64 -d', @")<CR>
+" base64-encode a visual selection
+vnoremap <leader>64e y:echo system('base64', @")<CR>
+
 " Plugin: NerdTree
 map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
