@@ -101,5 +101,5 @@
 	path = .vim/pack/gws/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule ".vim/pack/gws/start/vim-solarized8"]
-	path = .vim/pack/gws/start/vim-solarized8
+	path = .vim/pack/gws/opt/vim-solarized8
 	url = git@github.com:lifepillar/vim-solarized8.git
