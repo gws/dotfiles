@@ -1,13 +1,17 @@
-umask 022
+### Shell variables
+
+HISTCONTROL=ignoreboth
+HISTFILE=""
 
 if [ $(id -u) -eq 0 ]; then
-    export PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
+    PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
 else
-    export PS1="\u@[1;32m\h[m:\w\n\\$ "
+    PS1="\u@[1;32m\h[m:\w\n\\$ "
 fi
 
+### Exported variables
+
 export EDITOR="vim"
-export HISTFILE=""
 export GPG_TTY=$(tty)
 export JAVA_HOME="`which java | sed 's!/bin/java!!'`"
 export LESS="-q -R"
@@ -21,23 +25,27 @@ export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-alias ls="ls -N --color=auto"
-alias ll="ls -la"
-alias tmux="tmux -2u"
+function ls {
+  /bin/ls -N --color=auto "$@"
+}
 
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+function ll {
+  ls -la "$@"
+}
+
+function tmux {
+  /usr/bin/tmux -2u "$@"
+}
+
+if [ -d "${HOME}/.bashrc.d" ]; then
+  for i in "${HOME}/.bashrc.d/"*; do
+    if [ -r "$i" ]; then
+      . "$i"
+    fi
+  done
+  unset i
 fi
 
-for script in $HOME/.bashrc.d/*
-do
-  . $script
-done
-
-if [ -r "$HOME/.bashrc-local" ]; then
-    . $HOME/.bashrc-local
+if [ -r "${HOME}/.bashrc-local" ]; then
+    . "${HOME}/.bashrc-local"
 fi
