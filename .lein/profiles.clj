@@ -1,6 +1,6 @@
 {:user {:dependencies [[org.clojure/tools.namespace "0.3.0"]
                        [org.clojure/tools.trace "0.7.10"]]
-        :plugins [[jonase/eastwood "0.3.5"]
+        :plugins [[jonase/eastwood "0.3.6"]
                   [lein-ancient "0.6.15"]
                   [lein-cljfmt "0.6.4"]
                   [lein-exec "0.3.7"]
