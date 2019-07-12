@@ -11,12 +11,15 @@ fi
 
 ### Exported variables
 
-export EDITOR="vim"
+export PATH="${HOME}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
 export GPG_TTY=$(tty)
+
+export PAGER="less"
 export LESS="-q -R"
 export LESSHISTFILE="-"
-export PAGER="less"
-export PATH="${HOME}/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+export EDITOR="vim"
 export SUDO_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 
