@@ -13,7 +13,6 @@ fi
 
 export EDITOR="vim"
 export GPG_TTY=$(tty)
-export JAVA_HOME="`which java | sed 's!/bin/java!!'`"
 export LESS="-q -R"
 export LESSHISTFILE="-"
 export PAGER="less"
