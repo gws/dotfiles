@@ -40,9 +40,6 @@
 [submodule ".vim/pack/gws/start/vim-airline-themes"]
 	path = .vim/pack/gws/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule ".vim/pack/gws/start/vim-clojure-highlight"]
-	path = .vim/pack/gws/start/vim-clojure-highlight
-	url = https://github.com/guns/vim-clojure-highlight.git
 [submodule ".vim/pack/gws/start/vim-dispatch"]
 	path = .vim/pack/gws/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
