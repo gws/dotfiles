@@ -3,11 +3,23 @@
 HISTCONTROL=ignoreboth
 HISTFILE=""
 
-if [ $(id -u) -eq 0 ]; then
-    PS1="[1;31m\u[m@[1;32m\h[m:\w\n\\$ "
-else
-    PS1="\u@[1;32m\h[m:\w\n\\$ "
-fi
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[1;32m\]"
+CYAN="\[\033[1;36m\]"
+RED="\[\033[1;31m\]"
+RESTORE="\[\033[0m\]"
+
+function prompt_command {
+  local USER_PS1="\u"
+
+  if [ $(id -u) -eq 0 ]; then
+    USER_PS1="${RED}\u${RESTORE}"
+  fi
+
+  PS1="${USER_PS1}@${GREEN}\h${RESTORE}:\w$\n\\$ "
+}
+
+PROMPT_COMMAND=prompt_command
 
 ### Exported variables
 
