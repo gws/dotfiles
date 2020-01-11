@@ -1,7 +1,6 @@
 ### Shell variables
 
 HISTCONTROL=ignoreboth
-HISTFILE=""
 
 YELLOW="\[\033[1;33m\]"
 GREEN="\[\033[1;32m\]"
