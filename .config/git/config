@@ -6,6 +6,9 @@
 [includeIf "gitdir:~/src/democracyworks/"]
 	path = ~/src/democracyworks/gitconfig
 
+[includeIf "gitdir:~/src/votinginfoproject/"]
+	path = ~/src/votinginfoproject/gitconfig
+
 [core]
 	ignorecase = false
 	pager      = less -F -X
