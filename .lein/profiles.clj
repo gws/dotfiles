@@ -1,6 +1,6 @@
 {:user {:dependencies [[org.clojure/tools.namespace "1.0.0"]
                        [org.clojure/tools.trace "0.7.10"]
-                       [clj-kondo "2020.03.20"]]
+                       [clj-kondo "2020.04.05"]]
         :plugins [[lein-ancient "0.6.15"]
                   [lein-cljfmt "0.6.7"]
                   [lein-kibit "0.1.8"]
