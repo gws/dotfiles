@@ -7,4 +7,4 @@
                   [lein-ring "0.12.5"]
                   [lein-pprint "1.3.2"]]
         :aliases {"clj-kondo" ["run" "-m" "clj-kondo.main"]}}
- :repl {:plugins [[cider/cider-nrepl "0.24.0"]]}}
+ :repl {:plugins [[cider/cider-nrepl "0.25.0"]]}}
