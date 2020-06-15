@@ -33,6 +33,9 @@
 [push]
 	default = current
 
+[pull]
+	rebase = true
+
 [alias]
 	# Index operations
 	a      = add --all
