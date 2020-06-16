@@ -835,6 +835,48 @@ _minikube_completion()
     noun_aliases=()
 }
 
+_minikube_config_defaults()
+{
+    last_command="minikube_config_defaults"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--output=")
+    two_word_flags+=("--output")
+    local_nonpersistent_flags+=("--output=")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--logtostderr")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _minikube_config_get()
 {
     last_command="minikube_config_get"
@@ -1001,6 +1043,7 @@ _minikube_config()
     command_aliases=()
 
     commands=()
+    commands+=("defaults")
     commands+=("get")
     commands+=("set")
     commands+=("unset")
@@ -2241,6 +2284,10 @@ _minikube_status()
     two_word_flags+=("--format")
     two_word_flags+=("-f")
     local_nonpersistent_flags+=("--format=")
+    flags+=("--node=")
+    two_word_flags+=("--node")
+    two_word_flags+=("-n")
+    local_nonpersistent_flags+=("--node=")
     flags+=("--output=")
     two_word_flags+=("--output")
     two_word_flags+=("-o")
