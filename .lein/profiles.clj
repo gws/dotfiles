@@ -1,4 +1,4 @@
-{:user {:dependencies [[org.clojure/tools.namespace "1.0.0"]
+{:user {:dependencies [[org.clojure/tools.namespace "1.1.0"]
                        [org.clojure/tools.trace "0.7.10"]
                        [clj-kondo "2020.11.07"]]
         :plugins [[lein-ancient "0.6.15"]
@@ -7,4 +7,4 @@
                   [lein-ring "0.12.5"]
                   [lein-pprint "1.3.2"]]
         :aliases {"clj-kondo" ["run" "-m" "clj-kondo.main"]}}
- :repl {:plugins [[cider/cider-nrepl "0.25.4"]]}}
+ :repl {:plugins [[cider/cider-nrepl "0.25.5"]]}}
