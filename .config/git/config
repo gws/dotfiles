@@ -24,6 +24,9 @@
 [diff]
 	renames = copies
 
+[init]
+	defaultBranch = main
+
 [interactive]
 	singlekey = true
 
