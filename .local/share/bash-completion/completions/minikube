@@ -2727,16 +2727,16 @@ _minikube_pause()
     flags_with_completion=()
     flags_completion=()
 
-    flags+=("----namespaces=")
-    two_word_flags+=("----namespaces")
-    two_word_flags+=("-n")
-    local_nonpersistent_flags+=("----namespaces")
-    local_nonpersistent_flags+=("----namespaces=")
-    local_nonpersistent_flags+=("-n")
     flags+=("--all-namespaces")
     flags+=("-A")
     local_nonpersistent_flags+=("--all-namespaces")
     local_nonpersistent_flags+=("-A")
+    flags+=("--namespaces=")
+    two_word_flags+=("--namespaces")
+    two_word_flags+=("-n")
+    local_nonpersistent_flags+=("--namespaces")
+    local_nonpersistent_flags+=("--namespaces=")
+    local_nonpersistent_flags+=("-n")
     flags+=("--output=")
     two_word_flags+=("--output")
     two_word_flags+=("-o")
@@ -3790,16 +3790,16 @@ _minikube_unpause()
     flags_with_completion=()
     flags_completion=()
 
-    flags+=("----namespaces=")
-    two_word_flags+=("----namespaces")
-    two_word_flags+=("-n")
-    local_nonpersistent_flags+=("----namespaces")
-    local_nonpersistent_flags+=("----namespaces=")
-    local_nonpersistent_flags+=("-n")
     flags+=("--all-namespaces")
     flags+=("-A")
     local_nonpersistent_flags+=("--all-namespaces")
     local_nonpersistent_flags+=("-A")
+    flags+=("--namespaces=")
+    two_word_flags+=("--namespaces")
+    two_word_flags+=("-n")
+    local_nonpersistent_flags+=("--namespaces")
+    local_nonpersistent_flags+=("--namespaces=")
+    local_nonpersistent_flags+=("-n")
     flags+=("--output=")
     two_word_flags+=("--output")
     two_word_flags+=("-o")
@@ -3959,6 +3959,8 @@ _minikube_version()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--components")
+    local_nonpersistent_flags+=("--components")
     flags+=("--output=")
     two_word_flags+=("--output")
     two_word_flags+=("-o")
@@ -4091,7 +4093,7 @@ _minikube_root_command()
 
 __start_minikube()
 {
-    local cur prev words cword
+    local cur prev words cword split
     declare -A flaghash 2>/dev/null || :
     declare -A aliashash 2>/dev/null || :
     if declare -F _init_completion >/dev/null 2>&1; then
@@ -4107,11 +4109,13 @@ __start_minikube()
     local flags_with_completion=()
     local flags_completion=()
     local commands=("minikube")
+    local command_aliases=()
     local must_have_one_flag=()
     local must_have_one_noun=()
     local has_completion_function
     local last_command
     local nouns=()
+    local noun_aliases=()
 
     __minikube_handle_word
 }
