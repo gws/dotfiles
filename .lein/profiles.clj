@@ -1,4 +1,4 @@
-{:user {:dependencies [[org.clojure/tools.namespace "1.1.0"]
+{:user {:dependencies [[org.clojure/tools.namespace "1.2.0"]
                        [org.clojure/tools.trace "0.7.11"]
                        [clj-kondo "2021.12.01"]]
         :plugins [[lein-ancient "0.7.0"]
