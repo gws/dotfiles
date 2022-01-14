@@ -26,8 +26,8 @@ set hidden
 
 " no spacing between rows
 set linespace=0
-" no line numbering
-set nonumber
+" line numbering
+set number
 " highlight search terms
 set hlsearch
 set winminheight=0
