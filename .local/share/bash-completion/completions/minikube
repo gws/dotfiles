@@ -16,7 +16,7 @@
 
 __minikube_debug()
 {
-    if [[ -n ${BASH_COMP_DEBUG_FILE} ]]; then
+    if [[ -n ${BASH_COMP_DEBUG_FILE:-} ]]; then
         echo "$*" >> "${BASH_COMP_DEBUG_FILE}"
     fi
 }
@@ -126,7 +126,7 @@ __minikube_handle_go_custom_completion()
         $filteringCmd
     elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
         # File completion for directories only
-        local subDir
+        local subdir
         # Use printf to strip any trailing newline
         subdir=$(printf "%s" "${out[0]}")
         if [ -n "$subdir" ]; then
@@ -179,13 +179,19 @@ __minikube_handle_reply()
                     PREFIX=""
                     cur="${cur#*=}"
                     ${flags_completion[${index}]}
-                    if [ -n "${ZSH_VERSION}" ]; then
+                    if [ -n "${ZSH_VERSION:-}" ]; then
                         # zsh completion needs --flag= prefix
                         eval "COMPREPLY=( \"\${COMPREPLY[@]/#/${flag}=}\" )"
                     fi
                 fi
             fi
-            return 0;
+
+            if [[ -z "${flag_parsing_disabled}" ]]; then
+                # If flag parsing is enabled, we have completed the flags and can return.
+                # If flag parsing is disabled, we may not know all (or any) of the flags, so we fallthrough
+                # to possibly call handle_go_custom_completion.
+                return 0;
+            fi
             ;;
     esac
 
@@ -224,13 +230,13 @@ __minikube_handle_reply()
     fi
 
     if [[ ${#COMPREPLY[@]} -eq 0 ]]; then
-		if declare -F __minikube_custom_func >/dev/null; then
-			# try command name qualified custom func
-			__minikube_custom_func
-		else
-			# otherwise fall back to unqualified for compatibility
-			declare -F __custom_func >/dev/null && __custom_func
-		fi
+        if declare -F __minikube_custom_func >/dev/null; then
+            # try command name qualified custom func
+            __minikube_custom_func
+        else
+            # otherwise fall back to unqualified for compatibility
+            declare -F __custom_func >/dev/null && __custom_func
+        fi
     fi
 
     # available in bash-completion >= 2, not always present on macOS
@@ -264,7 +270,7 @@ __minikube_handle_flag()
 
     # if a command required a flag, and we found it, unset must_have_one_flag()
     local flagname=${words[c]}
-    local flagvalue
+    local flagvalue=""
     # if the word contained an =
     if [[ ${words[c]} == *"="* ]]; then
         flagvalue=${flagname#*=} # take in as flagvalue after the =
@@ -283,7 +289,7 @@ __minikube_handle_flag()
 
     # keep flag value with flagname as flaghash
     # flaghash variable is an associative array which is only supported in bash > 3.
-    if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
         if [ -n "${flagvalue}" ] ; then
             flaghash[${flagname}]=${flagvalue}
         elif [ -n "${words[ $((c+1)) ]}" ] ; then
@@ -295,7 +301,7 @@ __minikube_handle_flag()
 
     # skip the argument to a two word flag
     if [[ ${words[c]} != *"="* ]] && __minikube_contains_word "${words[c]}" "${two_word_flags[@]}"; then
-			  __minikube_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
+        __minikube_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
         c=$((c+1))
         # if we are looking for a flags value, don't show commands
         if [[ $c -eq $cword ]]; then
@@ -355,7 +361,7 @@ __minikube_handle_word()
         __minikube_handle_command
     elif __minikube_contains_word "${words[c]}" "${command_aliases[@]}"; then
         # aliashash variable is an associative array which is only supported in bash > 3.
-        if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+        if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
             words[c]=${aliashash[${words[c]}]}
             __minikube_handle_command
         else
@@ -776,8 +782,8 @@ _minikube_cache_add()
     flags_with_completion=()
     flags_completion=()
 
-    flags+=("--")
-    local_nonpersistent_flags+=("--")
+    flags+=("--all")
+    local_nonpersistent_flags+=("--all")
     flags+=("--add_dir_header")
     flags+=("--alsologtostderr")
     flags+=("--bootstrapper=")
@@ -1618,6 +1624,10 @@ _minikube_dashboard()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--port=")
+    two_word_flags+=("--port")
+    local_nonpersistent_flags+=("--port")
+    local_nonpersistent_flags+=("--port=")
     flags+=("--url")
     local_nonpersistent_flags+=("--url")
     flags+=("--add_dir_header")
@@ -1728,6 +1738,12 @@ _minikube_docker-env()
 
     flags+=("--no-proxy")
     local_nonpersistent_flags+=("--no-proxy")
+    flags+=("--output=")
+    two_word_flags+=("--output")
+    two_word_flags+=("-o")
+    local_nonpersistent_flags+=("--output")
+    local_nonpersistent_flags+=("--output=")
+    local_nonpersistent_flags+=("-o")
     flags+=("--shell=")
     two_word_flags+=("--shell")
     local_nonpersistent_flags+=("--shell")
@@ -1843,6 +1859,8 @@ _minikube_image_build()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--all")
+    local_nonpersistent_flags+=("--all")
     flags+=("--build-env=")
     two_word_flags+=("--build-env")
     local_nonpersistent_flags+=("--build-env")
@@ -1857,6 +1875,12 @@ _minikube_image_build()
     local_nonpersistent_flags+=("--file")
     local_nonpersistent_flags+=("--file=")
     local_nonpersistent_flags+=("-f")
+    flags+=("--node=")
+    two_word_flags+=("--node")
+    two_word_flags+=("-n")
+    local_nonpersistent_flags+=("--node")
+    local_nonpersistent_flags+=("--node=")
+    local_nonpersistent_flags+=("-n")
     flags+=("--push")
     local_nonpersistent_flags+=("--push")
     flags+=("--tag=")
@@ -1975,6 +1999,112 @@ _minikube_image_ls()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--format=")
+    two_word_flags+=("--format")
+    local_nonpersistent_flags+=("--format")
+    local_nonpersistent_flags+=("--format=")
+    flags+=("--add_dir_header")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--help")
+    flags+=("-h")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--log_file=")
+    two_word_flags+=("--log_file")
+    flags+=("--log_file_max_size=")
+    two_word_flags+=("--log_file_max_size")
+    flags+=("--logtostderr")
+    flags+=("--one_output")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--skip_headers")
+    flags+=("--skip_log_headers")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_minikube_image_pull()
+{
+    last_command="minikube_image_pull"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--add_dir_header")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--help")
+    flags+=("-h")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--log_file=")
+    two_word_flags+=("--log_file")
+    flags+=("--log_file_max_size=")
+    two_word_flags+=("--log_file_max_size")
+    flags+=("--logtostderr")
+    flags+=("--one_output")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--skip_headers")
+    flags+=("--skip_log_headers")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_minikube_image_push()
+{
+    last_command="minikube_image_push"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
     flags+=("--add_dir_header")
     flags+=("--alsologtostderr")
     flags+=("--bootstrapper=")
@@ -2063,6 +2193,112 @@ _minikube_image_rm()
     noun_aliases=()
 }
 
+_minikube_image_save()
+{
+    last_command="minikube_image_save"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--daemon")
+    local_nonpersistent_flags+=("--daemon")
+    flags+=("--remote")
+    local_nonpersistent_flags+=("--remote")
+    flags+=("--add_dir_header")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--help")
+    flags+=("-h")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--log_file=")
+    two_word_flags+=("--log_file")
+    flags+=("--log_file_max_size=")
+    two_word_flags+=("--log_file_max_size")
+    flags+=("--logtostderr")
+    flags+=("--one_output")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--skip_headers")
+    flags+=("--skip_log_headers")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_minikube_image_tag()
+{
+    last_command="minikube_image_tag"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--add_dir_header")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--help")
+    flags+=("-h")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--log_file=")
+    two_word_flags+=("--log_file")
+    flags+=("--log_file_max_size=")
+    two_word_flags+=("--log_file_max_size")
+    flags+=("--logtostderr")
+    flags+=("--one_output")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--skip_headers")
+    flags+=("--skip_log_headers")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _minikube_image()
 {
     last_command="minikube_image"
@@ -2073,16 +2309,24 @@ _minikube_image()
     commands+=("build")
     commands+=("load")
     commands+=("ls")
-    if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
         command_aliases+=("list")
         aliashash["list"]="ls"
     fi
+    commands+=("pull")
+    commands+=("push")
     commands+=("rm")
-    if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
         command_aliases+=("remove")
         aliashash["remove"]="rm"
         command_aliases+=("unload")
         aliashash["unload"]="rm"
+    fi
+    commands+=("save")
+    commands+=("tag")
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
+        command_aliases+=("list")
+        aliashash["list"]="tag"
     fi
 
     flags=()
@@ -2337,10 +2581,6 @@ _minikube_mount()
     local_nonpersistent_flags+=("--ip=")
     flags+=("--kill")
     local_nonpersistent_flags+=("--kill")
-    flags+=("--mode=")
-    two_word_flags+=("--mode")
-    local_nonpersistent_flags+=("--mode")
-    local_nonpersistent_flags+=("--mode=")
     flags+=("--msize=")
     two_word_flags+=("--msize")
     local_nonpersistent_flags+=("--msize")
@@ -2349,6 +2589,10 @@ _minikube_mount()
     two_word_flags+=("--options")
     local_nonpersistent_flags+=("--options")
     local_nonpersistent_flags+=("--options=")
+    flags+=("--port=")
+    two_word_flags+=("--port")
+    local_nonpersistent_flags+=("--port")
+    local_nonpersistent_flags+=("--port=")
     flags+=("--type=")
     two_word_flags+=("--type")
     local_nonpersistent_flags+=("--type")
@@ -2669,6 +2913,57 @@ _minikube_node()
     commands+=("list")
     commands+=("start")
     commands+=("stop")
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--add_dir_header")
+    flags+=("--alsologtostderr")
+    flags+=("--bootstrapper=")
+    two_word_flags+=("--bootstrapper")
+    two_word_flags+=("-b")
+    flags+=("--help")
+    flags+=("-h")
+    flags+=("--log_backtrace_at=")
+    two_word_flags+=("--log_backtrace_at")
+    flags+=("--log_dir=")
+    two_word_flags+=("--log_dir")
+    flags+=("--log_file=")
+    two_word_flags+=("--log_file")
+    flags+=("--log_file_max_size=")
+    two_word_flags+=("--log_file_max_size")
+    flags+=("--logtostderr")
+    flags+=("--one_output")
+    flags+=("--profile=")
+    two_word_flags+=("--profile")
+    two_word_flags+=("-p")
+    flags+=("--skip_headers")
+    flags+=("--skip_log_headers")
+    flags+=("--stderrthreshold=")
+    two_word_flags+=("--stderrthreshold")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    flags+=("--v=")
+    two_word_flags+=("--v")
+    two_word_flags+=("-v")
+    flags+=("--vmodule=")
+    two_word_flags+=("--vmodule")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_minikube_options()
+{
+    last_command="minikube_options"
+
+    command_aliases=()
+
+    commands=()
 
     flags=()
     two_word_flags=()
@@ -3298,8 +3593,16 @@ _minikube_start()
     two_word_flags+=("--base-image")
     local_nonpersistent_flags+=("--base-image")
     local_nonpersistent_flags+=("--base-image=")
+    flags+=("--binary-mirror=")
+    two_word_flags+=("--binary-mirror")
+    local_nonpersistent_flags+=("--binary-mirror")
+    local_nonpersistent_flags+=("--binary-mirror=")
     flags+=("--cache-images")
     local_nonpersistent_flags+=("--cache-images")
+    flags+=("--cert-expiration=")
+    two_word_flags+=("--cert-expiration")
+    local_nonpersistent_flags+=("--cert-expiration")
+    local_nonpersistent_flags+=("--cert-expiration=")
     flags+=("--cni=")
     two_word_flags+=("--cni")
     local_nonpersistent_flags+=("--cni")
@@ -3354,6 +3657,10 @@ _minikube_start()
     two_word_flags+=("--extra-config")
     local_nonpersistent_flags+=("--extra-config")
     local_nonpersistent_flags+=("--extra-config=")
+    flags+=("--extra-disks=")
+    two_word_flags+=("--extra-disks")
+    local_nonpersistent_flags+=("--extra-disks")
+    local_nonpersistent_flags+=("--extra-disks=")
     flags+=("--feature-gates=")
     two_word_flags+=("--feature-gates")
     local_nonpersistent_flags+=("--feature-gates")
@@ -3442,10 +3749,42 @@ _minikube_start()
     local_nonpersistent_flags+=("--memory=")
     flags+=("--mount")
     local_nonpersistent_flags+=("--mount")
+    flags+=("--mount-9p-version=")
+    two_word_flags+=("--mount-9p-version")
+    local_nonpersistent_flags+=("--mount-9p-version")
+    local_nonpersistent_flags+=("--mount-9p-version=")
+    flags+=("--mount-gid=")
+    two_word_flags+=("--mount-gid")
+    local_nonpersistent_flags+=("--mount-gid")
+    local_nonpersistent_flags+=("--mount-gid=")
+    flags+=("--mount-ip=")
+    two_word_flags+=("--mount-ip")
+    local_nonpersistent_flags+=("--mount-ip")
+    local_nonpersistent_flags+=("--mount-ip=")
+    flags+=("--mount-msize=")
+    two_word_flags+=("--mount-msize")
+    local_nonpersistent_flags+=("--mount-msize")
+    local_nonpersistent_flags+=("--mount-msize=")
+    flags+=("--mount-options=")
+    two_word_flags+=("--mount-options")
+    local_nonpersistent_flags+=("--mount-options")
+    local_nonpersistent_flags+=("--mount-options=")
+    flags+=("--mount-port=")
+    two_word_flags+=("--mount-port")
+    local_nonpersistent_flags+=("--mount-port")
+    local_nonpersistent_flags+=("--mount-port=")
     flags+=("--mount-string=")
     two_word_flags+=("--mount-string")
     local_nonpersistent_flags+=("--mount-string")
     local_nonpersistent_flags+=("--mount-string=")
+    flags+=("--mount-type=")
+    two_word_flags+=("--mount-type")
+    local_nonpersistent_flags+=("--mount-type")
+    local_nonpersistent_flags+=("--mount-type=")
+    flags+=("--mount-uid=")
+    two_word_flags+=("--mount-uid")
+    local_nonpersistent_flags+=("--mount-uid")
+    local_nonpersistent_flags+=("--mount-uid=")
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     local_nonpersistent_flags+=("--namespace")
@@ -3472,6 +3811,8 @@ _minikube_start()
     two_word_flags+=("--nfs-shares-root")
     local_nonpersistent_flags+=("--nfs-shares-root")
     local_nonpersistent_flags+=("--nfs-shares-root=")
+    flags+=("--no-kubernetes")
+    local_nonpersistent_flags+=("--no-kubernetes")
     flags+=("--no-vtx-check")
     local_nonpersistent_flags+=("--no-vtx-check")
     flags+=("--nodes=")
@@ -4028,6 +4369,7 @@ _minikube_root_command()
     commands+=("logs")
     commands+=("mount")
     commands+=("node")
+    commands+=("options")
     commands+=("pause")
     commands+=("podman-env")
     commands+=("profile")
@@ -4040,7 +4382,7 @@ _minikube_root_command()
     commands+=("stop")
     commands+=("tunnel")
     commands+=("unpause")
-    if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
         command_aliases+=("resume")
         aliashash["resume"]="unpause"
     fi
@@ -4103,6 +4445,7 @@ __start_minikube()
     fi
 
     local c=0
+    local flag_parsing_disabled=
     local flags=()
     local two_word_flags=()
     local local_nonpersistent_flags=()
@@ -4112,8 +4455,8 @@ __start_minikube()
     local command_aliases=()
     local must_have_one_flag=()
     local must_have_one_noun=()
-    local has_completion_function
-    local last_command
+    local has_completion_function=""
+    local last_command=""
     local nouns=()
     local noun_aliases=()
 
