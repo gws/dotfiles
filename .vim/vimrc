@@ -57,6 +57,9 @@ set expandtab shiftwidth=2 tabstop=2 softtabstop=2
 set textwidth=80
 set formatoptions-=t
 
+set grepprg=rg\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
+
 " clojure formatting
 let g:clojure_align_subforms=1
 let g:clojure_fuzzy_indent=1
